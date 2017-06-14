@@ -84,8 +84,8 @@ $(function(){
 $(function(){
   $(".twitter-share-button").click(function(){
     "href", "https://twitter.com/intent/tweet?=" + displayedQuote.quote + "data-size=\"large\"
-  }
 })
+}
 
 
 
