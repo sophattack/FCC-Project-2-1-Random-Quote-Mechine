@@ -1,3 +1,8 @@
+$(document).ready(function(){
+
+  var displayedQuote;
+  var currInd;
+  
 function random_col(){
   var col = [];
   var c = "0123456789ABCDEF";
@@ -58,13 +63,11 @@ var quotes = [
   {quote:"Civilization has given us enormous successes: going to the moon, technology. But then this is the civilisation that took us to debt, environmental crisis, every single crisis. We need a civilization where we say goodbye to these things.", author:"Muhammad Yunus"}, 
   {quote:"Our technological powers increase, but the side effects and potential hazards also escalate.", author:"Alvin Toffler"}, 
   {quote:"Modern technology has become a total phenomenon for civilization, the defining force of a new social order in which efficiency is no longer an option but a necessity imposed on all human activity.", author:"Jacques Ellul"}
-]
-
-var displayedQuote;
-var currInd;
+];
 function updateQuotes(){
+  var ind;
   do{
-    var ind = Math.floor(Math.random()*quotes.length);
+    ind = Math.floor(Math.random()*quotes.length);
   }
   while(currInd==ind);
   
@@ -78,14 +81,13 @@ $(function(){
   $("#generator").click(function(){
     updateQuotes();
     set_col();
-})
-})
+});
+});
 
-$(function(){
-  $(".twitter-share-button").click(function(){
-    "href", "https://twitter.com/intent/tweet?=" + displayedQuote.quote + "data-size=\"large\"
-})
-}
+  
+  var encoded = encodeURI(displayedQuote.quote);
+  $("#tweetit").on("click", function(){
+  window.open("https://twitter.com/intent/tweet?text=" + encoded);
+});
 
-
-
+});
